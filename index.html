@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>教育学ノート | 教育学の勉強サイト</title>
+<meta name="description" content="教育学を学ぶ学生の勉強サイト。勉強の記録、関連する漫画やイラスト、小論文形式のコラムをまとめています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #98fb98;
+    --ink: #1d3b2a;
+    --ink-soft: #3f5f4c;
+    --paper: #fdfffb;
+    --rule: #cfeccf;
+    --margin: #e59a9a;
+    --marker: #fff2a6;
+    --serif: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --sans: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--green);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.9;
+    font-size: 16px;
+  }
+  a { color: inherit; }
+  a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 2px; }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  /* header */
+  header { padding: 18px 0 8px; }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; }
+  .brand { font-family: var(--serif); font-weight: 700; font-size: 1.3rem; text-decoration: none; letter-spacing: .08em; }
+  nav ul { display: flex; gap: 6px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+  nav a {
+    display: block; padding: 4px 14px; text-decoration: none; font-size: .95rem; font-weight: 500;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover { border-bottom-color: var(--ink); }
+  nav a[aria-current="page"] { background: var(--paper); border-radius: 4px 4px 0 0; border-bottom-color: var(--ink); }
+
+  /* paper sheets */
+  .sheet {
+    background:
+      linear-gradient(to right, transparent 56px, var(--margin) 56px, var(--margin) 58px, transparent 58px),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 33px, var(--rule) 33px, var(--rule) 34px),
+      var(--paper);
+    background-position: 0 0, 0 14px, 0 0;
+    border-radius: 3px;
+    box-shadow: 0 2px 0 rgba(29,59,42,.18);
+    margin: 24px 0;
+    padding: 34px 28px 34px 80px;
+  }
+  .sheet h2 {
+    font-family: var(--serif); font-size: 1.45rem; margin: 0 0 6px; line-height: 1.5;
+    display: inline; background: linear-gradient(transparent 62%, var(--marker) 62%);
+  }
+  .sheet .sub { margin: 8px 0 22px; color: var(--ink-soft); font-size: .92rem; }
+
+  /* hero */
+  .hero { padding-top: 48px; padding-bottom: 44px; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(1.9rem, 5.2vw, 2.9rem); line-height: 1.5; margin: 0 0 18px; letter-spacing: .04em; }
+  .hero p { max-width: 36em; margin: 0 0 14px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px; font-size: .9rem; color: var(--ink-soft); }
+  .meta dt { display: inline; font-weight: 700; color: var(--ink); }
+  .meta dd { display: inline; margin: 0 0 0 6px; }
+  .meta div { white-space: nowrap; }
+
+  /* subjects */
+  .subjects { list-style: none; margin: 0; padding: 0; }
+  .subjects li { display: grid; grid-template-columns: 1fr auto; gap: 0 16px; padding: 4px 0; align-items: baseline; }
+  .subjects strong { font-family: var(--serif); font-size: 1.05rem; }
+  .subjects span.desc { grid-column: 1; color: var(--ink-soft); font-size: .9rem; }
+  .status { grid-row: 1; grid-column: 2; font-size: .8rem; padding: 0 10px; border: 1.5px solid var(--ink); border-radius: 999px; line-height: 1.7; white-space: nowrap; }
+  .status.doing { background: var(--green); }
+  .status.done { background: var(--ink); color: var(--paper); }
+  .status.todo { border-style: dashed; color: var(--ink-soft); border-color: var(--ink-soft); }
+
+  /* log */
+  .log { list-style: none; margin: 0; padding: 0; }
+  .log li { display: grid; grid-template-columns: 7.5em 1fr; gap: 0 14px; padding: 6px 0; }
+  .log time { font-size: .88rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .more { display: inline-block; margin-top: 14px; font-weight: 700; }
+
+  /* column */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .cols h3 { font-family: var(--serif); font-size: 1.1rem; margin: 0 0 4px; }
+  .cols p { margin: 0; font-size: .93rem; }
+  .panels { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin: 10px 0 8px; max-width: 220px; }
+  .panels i { aspect-ratio: 1; border: 1.5px solid var(--ink); background: var(--paper); border-radius: 2px; }
+
+  footer { padding: 22px 0 40px; font-size: .88rem; text-align: center; }
+  footer ul { list-style: none; margin: 0 0 10px; padding: 0; display: flex; gap: 6px 20px; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 640px) {
+    .sheet { padding: 28px 16px 28px 52px;
+      background:
+        linear-gradient(to right, transparent 34px, var(--margin) 34px, var(--margin) 36px, transparent 36px),
+        repeating-linear-gradient(to bottom, transparent 0, transparent 33px, var(--rule) 33px, var(--rule) 34px),
+        var(--paper);
+      background-position: 0 0, 0 14px, 0 0; }
+    .cols { grid-template-columns: 1fr; }
+    .log li { grid-template-columns: 1fr; }
+    .subjects li { grid-template-columns: 1fr; }
+    .status { grid-row: auto; grid-column: 1; justify-self: start; margin-top: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html">教育学ノート</a>
+    <nav aria-label="メインメニュー">
+      <ul>
+        <li><a href="index.html" aria-current="page">ホーム</a></li>
+        <li><a href="blog.html">勉強ログ</a></li>
+        <li><a href="column.html">コラム</a></li>
+        <li><a href="about.html">このサイトについて</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="sheet hero" aria-labelledby="top-title">
+    <h1 id="top-title">教育学を、<br>ノートに書きながら学ぶ。</h1>
+    <p>教育とは何か、人はどう学び、社会はどう教えてきたのか。教育学を勉強している学生の、日々の学習記録と気づきを置いておくサイトです。</p>
+    <p>わかったことだけでなく、つまずいたことも残していきます。</p>
+    <dl class="meta">
+      <div><dt>勉強ログ</dt><dd>日付と一言ずつ</dd></div>
+      <div><dt>コラム</dt><dd>漫画・イラスト・小論文</dd></div>
+    </dl>
+  </section>
+
+  <section class="sheet" aria-labelledby="subjects-title">
+    <h2 id="subjects-title">学んでいる分野</h2>
+    <p class="sub">いまの進み具合をノートの目次のようにまとめています。</p>
+    <ul class="subjects">
+      <li><strong>教育原理</strong><span class="status doing">勉強中</span><span class="desc">教育の目的・思想・基本概念</span></li>
+      <li><strong>教育史</strong><span class="status doing">勉強中</span><span class="desc">日本と西洋の教育の移り変わり</span></li>
+      <li><strong>教育心理学</strong><span class="status todo">これから</span><span class="desc">発達・学習・動機づけ</span></li>
+      <li><strong>教育方法・カリキュラム</strong><span class="status todo">これから</span><span class="desc">授業のつくり方と評価</span></li>
+      <li><strong>教育制度・教育行政</strong><span class="status todo">これから</span><span class="desc">学校のしくみと法律</span></li>
+      <li><strong>特別支援教育</strong><span class="status todo">これから</span><span class="desc">一人ひとりに合った学びの支援</span></li>
+    </ul>
+  </section>
+
+  <section class="sheet" aria-labelledby="log-title">
+    <h2 id="log-title">最近の勉強ログ</h2>
+    <p class="sub">ブログページには、日付とその日の記録だけを短く残しています。</p>
+    <ul class="log">
+      <li><time datetime="2026-10-07">2026.10.07</time><span>教育原理のテキストを第2章まで読了。「教育」の定義が思想家ごとに違うのが面白い。</span></li>
+      <li><time datetime="2026-10-05">2026.10.05</time><span>教育史のノートを整理。年表にすると流れがつかみやすかった。</span></li>
+      <li><time datetime="2026-10-03">2026.10.03</time><span>図書館で参考書を3冊借りた。まずは用語集から読む。</span></li>
+    </ul>
+    <a class="more" href="blog.html">勉強ログをもっと見る</a>
+  </section>
+
+  <section class="sheet" aria-labelledby="column-title">
+    <h2 id="column-title">コラム</h2>
+    <p class="sub">勉強の合間に描いたものや、考えたことを書いています。</p>
+    <div class="cols">
+      <div>
+        <h3>漫画・イラスト・4コマ</h3>
+        <div class="panels" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <p>教育学の用語や、勉強中のできごとを4コマにしています。</p>
+      </div>
+      <div>
+        <h3>小論文形式の軽い記事</h3>
+        <p>授業や本で気になったテーマを、短い小論文の形でまとめます。問いを立て、自分なりに考えて、結論を書く練習の場です。</p>
+      </div>
+    </div>
+    <a class="more" href="column.html">コラムを読む</a>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <ul>
+      <li><a href="index.html">ホーム</a></li>
+      <li><a href="blog.html">勉強ログ</a></li>
+      <li><a href="column.html">コラム</a></li>
+      <li><a href="about.html">このサイトについて</a></li>
+    </ul>
+    <small>&copy; 2026 教育学ノート</small>
+  </div>
+</footer>
+
+</body>
+</html>
